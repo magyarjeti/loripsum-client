@@ -2,8 +2,12 @@
 
 namespace Magyarjeti\Loripsum;
 
+use Magyarjeti\Loripsum\Http\CurlAdapter;
+
 class Client
 {
+    const API_URL = 'http://loripsum.net/api/';
+
     protected $capabilities = [
         'short',
         'medium',
@@ -25,7 +29,14 @@ class Client
 
     protected $paragraphs;
 
-    public function html($paragraphs)
+    protected $conn;
+
+    public function __construct(CurlAdapter $conn)
+    {
+        $this->conn = $conn;
+    }
+
+    public function html($paragraphs = null)
     {
         $this->paragraphs = $paragraphs;
 
@@ -34,11 +45,11 @@ class Client
         return $this;
     }
 
-    public function plaintext($paragraphs)
+    public function plaintext($paragraphs = null)
     {
-        $this->params['plaintext'] = true;
-
         $this->paragraphs = $paragraphs;
+
+        $this->params['plaintext'] = true;
 
         return $this;
     }
@@ -51,25 +62,9 @@ class Client
             $params[] = $this->paragraphs;
         }
 
-        $url = sprintf(
-            'http://loripsum.net/api/%s',
-            implode('/', $params)
-        );
+        $url = self::API_URL . implode('/', $params);
 
-        $this->params = [];
-        $this->paragraphs = null;
-
-        $ch = curl_init();
-
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
-
-        $lipsum = curl_exec($ch);
-
-        curl_close($ch);
-
-        return $lipsum;
+        return $this->conn->request($url);
     }
 
     public function __call($method, $params)

@@ -1,7 +1,10 @@
 <?php
 
+use Magyarjeti\Loripsum\Client;
+use Magyarjeti\Loripsum\Http\CurlAdapter;
+
 require __DIR__ . '/vendor/autoload.php';
 
-$lipsum = new Magyarjeti\Loripsum\Client;
+$client = new Client(new CurlAdapter);
 
-echo $lipsum->html(2)->plaintext(3)->link()->get();
+echo $client->html(2)->plaintext(3)->link()->get();
