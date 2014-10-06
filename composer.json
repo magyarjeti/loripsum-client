@@ -1,0 +1,10 @@
+{
+    "require": {
+        "ext-curl": "*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Magyarjeti\\Loripsum": "src/"
+        }
+    }
+}
