@@ -18,6 +18,10 @@ class CurlAdapter implements AdapterInterface
 
         curl_close($ch);
 
+        if ($response === false) {
+            throw new \RuntimeException('Connection timeout.');
+        }
+
         return $response;
     }
 }
