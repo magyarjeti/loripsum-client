@@ -2,7 +2,7 @@
 
 namespace Magyarjeti\Loripsum;
 
-use Magyarjeti\Loripsum\Http\CurlAdapter;
+use Magyarjeti\Loripsum\Http\AdapterInterface;
 
 class Client
 {
@@ -31,7 +31,7 @@ class Client
 
     protected $conn;
 
-    public function __construct(CurlAdapter $conn)
+    public function __construct(AdapterInterface $conn)
     {
         $this->conn = $conn;
     }

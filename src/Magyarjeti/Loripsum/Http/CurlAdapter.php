@@ -2,7 +2,7 @@
 
 namespace Magyarjeti\Loripsum\Http;
 
-class CurlAdapter
+class CurlAdapter implements AdapterInterface
 {
     public $timeout = 5;
 
