@@ -4,10 +4,16 @@ namespace Magyarjeti\Loripsum;
 
 use Magyarjeti\Loripsum\Http\AdapterInterface;
 
+/**
+ * Client for loripsum.net.
+ */
 class Client
 {
     const API_URL = 'http://loripsum.net/api/';
 
+    /**
+     * @var array Text generation capabilities.
+     */
     protected $capabilities = [
         'short',
         'medium',
@@ -25,17 +31,37 @@ class Client
         'prude'
     ];
 
+    /**
+     * @var array
+     */
     protected $params = [];
 
+    /**
+     * @var integer
+     */
     protected $paragraphs;
 
+    /**
+     * @var AdapterInterface
+     */
     protected $conn;
 
+    /**
+     * Create new loripsum client.
+     *
+     * @param AdapterInterface $conn
+     */
     public function __construct(AdapterInterface $conn)
     {
         $this->conn = $conn;
     }
 
+    /**
+     * Ask for HTML sample.
+     *
+     * @param integer $paragraphs Number of paragraphs.
+     * @return Client
+     */
     public function html($paragraphs = null)
     {
         $this->paragraphs = $paragraphs;
@@ -45,6 +71,12 @@ class Client
         return $this;
     }
 
+    /**
+     * Ask for plain text sample.
+     *
+     * @param integer $paragraphs Number of paragraphs.
+     * @return Client
+     */
     public function plaintext($paragraphs = null)
     {
         $this->paragraphs = $paragraphs;
@@ -54,6 +86,11 @@ class Client
         return $this;
     }
 
+    /**
+     * Generate the sample.
+     *
+     * @return string
+     */
     public function get()
     {
         $params = array_keys($this->params);
@@ -67,6 +104,13 @@ class Client
         return $this->conn->request($url);
     }
 
+    /**
+     * Set loripsum parameters.
+     *
+     * @param string $method
+     * @param array  $params
+     * @return Client
+     */
     public function __call($method, $params)
     {
         if (!in_array($method, $this->capabilities)) {
