@@ -110,17 +110,18 @@ class Client
     /**
      * Set text generation parameters.
      *
-     * @param string $method
+     * @param string $name
      * @param array  $params
      * @return Client
+     * @throws \RuntimeException
      */
-    public function __call($method, $params)
+    public function __call($name, array $params)
     {
-        if (!in_array($method, $this->capabilities)) {
-            throw new \RuntimeException("Unknown parameter: $method");
+        if (!in_array($name, $this->capabilities)) {
+            throw new \RuntimeException("Unknown parameter: $name");
         }
 
-        $this->params[$method] = true;
+        $this->params[$name] = true;
 
         return $this;
     }
