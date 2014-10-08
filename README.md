@@ -1,6 +1,8 @@
 Lorem ipsum generator
 =====================
 
+[![Build Status](https://travis-ci.org/magyarjeti/loripsum-client.svg?branch=master)](https://travis-ci.org/magyarjeti/loripsum-client)
+
 Lorem ipsum generator based on the [loripsum.net](http://loripsum.net/) API.
 
 ## Installation
