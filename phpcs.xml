@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<ruleset name="Jeti Standards">
+    <rule ref="PSR2" />
+
+    <rule ref="Generic.Files.LineLength">
+        <properties>
+            <property name="lineLimit" value="80" />
+            <property name="absoluteLineLimit" value="120" />
+        </properties>
+    </rule>
+
+    <!-- ### Whitespace ### -->
+
+    <rule ref="Squiz.WhiteSpace.OperatorSpacing" />
+    <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace">
+        <properties>
+            <property name="ignoreBlankLines" value="false" />
+        </properties>
+    </rule>
+    <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace.EmptyLines">
+        <severity>10</severity>
+    </rule>
+    <rule ref="Squiz.WhiteSpace.ControlStructureSpacing" />
+
+    <!-- ### Control structure ### -->
+
+    <rule ref="Squiz.ControlStructures.SwitchDeclaration" />
+    <rule ref="Squiz.ControlStructures.SwitchDeclaration.BreakIndent">
+        <severity>0</severity>
+    </rule>
+
+    <!-- ### String ### -->
+
+    <rule ref="Generic.Strings.UnnecessaryStringConcat" />
+    <rule ref="Squiz.Strings.DoubleQuoteUsage" />
+    <rule ref="Squiz.Strings.DoubleQuoteUsage.ContainsVar">
+        <severity>0</severity>
+    </rule>
+    <rule ref="Squiz.Strings.EchoedStrings" />
+
+    <!-- ### PHP ### -->
+
+    <rule ref="Squiz.PHP.CommentedOutCode" />
+    <rule ref="Squiz.PHP.GlobalKeyword" />
+    <rule ref="Squiz.PHP.Eval" />
+    <rule ref="Squiz.PHP.ForbiddenFunctions" />
+    <rule ref="Squiz.PHP.InnerFunctions" />
+    <rule ref="Squiz.PHP.LowercasePHPFunctions" />
+    <rule ref="Squiz.PHP.DiscouragedFunctions">
+        <properties>
+            <property name="error" value="true "/>
+        </properties>
+    </rule>
+    <rule ref="Squiz.PHP.DisallowSizeFunctionsInLoops" />
+    <rule ref="Squiz.PHP.DisallowMultipleAssignments" />
+
+    <!-- ### Class ### -->
+
+    <rule ref="Squiz.Classes.SelfMemberReference" />
+    <rule ref="Squiz.Classes.ClassFileName" />
+
+    <!-- ### Function ### -->
+
+    <rule ref="Squiz.Functions.FunctionDuplicateArgument" />
+
+    <!-- ### Commenting ### -->
+
+    <rule ref="Squiz.Commenting.FunctionComment" />
+    <rule ref="Squiz.Commenting.FunctionComment.MissingParamComment">
+        <severity>0</severity>
+    </rule>
+    <rule ref="Squiz.Commenting.FunctionComment.EmptyThrows">
+        <severity>0</severity>
+    </rule>
+    <rule ref="Squiz.Commenting.FunctionComment.ParameterCommentsNotAligned">
+        <severity>0</severity>
+    </rule>
+    <rule ref="Squiz.Commenting.ClassComment" />
+    <rule ref="Squiz.Commenting.ClassComment.TagNotAllowed">
+        <severity>0</severity>
+    </rule>
+    <rule ref="Squiz.Commenting.BlockComment" />
+    <rule ref="Squiz.Commenting.EmptyCatchComment" />
+    <rule ref="Squiz.Commenting.FunctionCommentThrowTag" />
+    <rule ref="Squiz.Commenting.InlineComment" />
+    <rule ref="Squiz.Commenting.VariableComment" />
+    <rule ref="Squiz.Commenting.VariableComment.TagNotAllowed">
+        <severity>0</severity>
+    </rule>
+
+    <!-- ### Operator ### -->
+
+    <rule ref="Squiz.Operators.ValidLogicalOperators" />
+
+    <!-- ### Scope ### -->
+
+    <rule ref="Squiz.Scope.StaticThisUsage" />
+</ruleset>
