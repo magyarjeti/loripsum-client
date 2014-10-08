@@ -1,7 +1,7 @@
 Lorem ipsum generator
 =====================
 
-Lorem ipsum generator based on the loripsum.net API.
+Lorem ipsum generator based on the [loripsum.net](http://loripsum.net/) API.
 
 ## Installation
 
@@ -14,7 +14,7 @@ Lorem ipsum generator based on the loripsum.net API.
 
 Create the following ```composer.json``` file and run the ```php composer.phar install``` command to install it.
 
-```
+```json
 {
     "require": {
         "magyarjeti/loripsum-client": "*"
@@ -45,6 +45,20 @@ Generate three short plain text paragraph:
 ```php
 $client->text(3)->short()->get();
 ```
+
+### Text formatting options
+
+- **short, medium, long, verylong** - The average length of a paragraph.
+- **decorate** - Add bold, italic and marked text.
+- **link** - Add links.
+- **ul** - Add unordered lists.
+- **ol** - Add numbered lists.
+- **dl** - Add description lists.
+- **bq** - Add blockquotes.
+- **code** - Add code samples.
+- **headers** - Add headers.
+- **allcaps** - Use ALL CAPS.
+- **prude** - Prude version.
 
 ## Author
 
