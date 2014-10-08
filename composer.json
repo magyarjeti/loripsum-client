@@ -1,4 +1,8 @@
 {
+    "name": "magyarjeti/loripsum-client",
+    "description": "Lorem ipsum generator.",
+    "keywords": ["loripsum", "lipsum", "lorem", "ipsum"],
+    "license": "MIT",
     "require": {
         "ext-curl": "*"
     },
