@@ -9,6 +9,9 @@ use Magyarjeti\Loripsum\Http\AdapterInterface;
  */
 class Client
 {
+    /**
+     * @const string API endpoint.
+     */
     const API_URL = 'http://loripsum.net/api/';
 
     /**
@@ -37,12 +40,12 @@ class Client
     protected $params = [];
 
     /**
-     * @var integer
+     * @var integer Number of paragraphs to generate.
      */
     protected $paragraphs;
 
     /**
-     * @var AdapterInterface
+     * @var AdapterInterface HTTP adapter instance.
      */
     protected $conn;
 
@@ -105,7 +108,7 @@ class Client
     }
 
     /**
-     * Set loripsum parameters.
+     * Set text generation parameters.
      *
      * @param string $method
      * @param array  $params
