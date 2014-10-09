@@ -39,13 +39,13 @@ $client = new Client(new CurlAdapter);
 Generate five paragraph HTML text with headers, link and unordered list:
 
 ```php
-$client->html(5)->headers()->link()->ul()->get();
+$client->headers()->link()->ul()->html(5);
 ```
 
 Generate three short plain text paragraph:
 
 ```php
-$client->text(3)->short()->get();
+$client->short()->get()->text(3);
 ```
 
 ### Text formatting options

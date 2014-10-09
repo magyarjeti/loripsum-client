@@ -60,7 +60,7 @@ class Client
     }
 
     /**
-     * Ask for HTML sample.
+     * Ask for HTML text.
      *
      * @param integer $paragraphs Number of paragraphs.
      * @return Client
@@ -71,40 +71,22 @@ class Client
 
         unset($this->params['plaintext']);
 
-        return $this;
+        return $this->generate();
     }
 
     /**
-     * Ask for plain text sample.
+     * Ask for plain text.
      *
      * @param integer $paragraphs Number of paragraphs.
      * @return Client
      */
-    public function plaintext($paragraphs = null)
+    public function text($paragraphs = null)
     {
         $this->paragraphs = $paragraphs;
 
         $this->params['plaintext'] = true;
 
-        return $this;
-    }
-
-    /**
-     * Generate the sample.
-     *
-     * @return string
-     */
-    public function get()
-    {
-        $params = array_keys($this->params);
-
-        if ($this->paragraphs) {
-            $params[] = $this->paragraphs;
-        }
-
-        $url = self::API_URL . implode('/', $params);
-
-        return $this->conn->request($url);
+        return $this->generate();
     }
 
     /**
@@ -124,5 +106,23 @@ class Client
         $this->params[$name] = true;
 
         return $this;
+    }
+
+    /**
+     * Generate the text.
+     *
+     * @return string
+     */
+    protected function generate()
+    {
+        $params = array_keys($this->params);
+
+        if ($this->paragraphs) {
+            $params[] = $this->paragraphs;
+        }
+
+        $url = self::API_URL . implode('/', $params);
+
+        return $this->conn->request($url);
     }
 }
