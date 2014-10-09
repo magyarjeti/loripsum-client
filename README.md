@@ -45,7 +45,7 @@ $client->headers()->link()->ul()->html(5);
 Generate three short plain text paragraph:
 
 ```php
-$client->short()->get()->text(3);
+$client->short()->text(3);
 ```
 
 ### Text formatting options
