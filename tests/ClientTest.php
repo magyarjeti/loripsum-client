@@ -43,7 +43,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
             }));
 
         $client = new Client($conn);
-        $client->get();
+        $client->html();
 
         $this->assertEquals(Client::API_URL, $uri);
     }
@@ -62,7 +62,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
 
         $client = new Client($conn);
         $client->headers();
-        $client->get();
+        $client->html();
 
         $this->assertRegExp('/headers/', $uri);
     }
@@ -80,7 +80,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
             }));
 
         $client = new Client($conn);
-        $client->get();
+        $client->html();
 
         $this->assertRegExp('/^[^\d]+$/', $uri);
     }
@@ -99,7 +99,6 @@ class ClientTest extends PHPUnit_Framework_TestCase
 
         $client = new Client($conn);
         $client->html(5);
-        $client->get();
 
         $this->assertRegExp('/\d/', $uri);
     }
@@ -120,27 +119,8 @@ class ClientTest extends PHPUnit_Framework_TestCase
         $client->headers();
         $client->headers();
         $client->headers();
-        $client->get();
+        $client->html();
 
         $this->assertEquals(1, substr_count($uri, 'headers'));
-    }
-
-    public function testHtmlPlaintextMutualExclusion()
-    {
-        $uri = '';
-
-        $conn = m::mock('Magyarjeti\Loripsum\Http\CurlAdapter');
-        $conn->shouldReceive('request')
-            ->once()
-            ->with(m::on(function ($url) use (&$uri) {
-                $uri = $url;
-                return true;
-            }));
-
-        $client = new Client($conn);
-        $client->plaintext()->html();
-        $client->get();
-
-        $this->assertNotRegExp('/plaintext/', $uri);
     }
 }
